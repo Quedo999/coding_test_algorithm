@@ -26,6 +26,7 @@ n,m = map(int, input().split())
 map = [list(map(int, input().split())) for _ in range(n)]
 chk = [[False] * m for _ in range(n)]
 
+# 오른, 아래, 왼, 위
 dy = [0,1,0,-1]
 dx = [1,0,-1,0]
 

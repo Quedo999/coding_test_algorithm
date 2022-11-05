@@ -1,16 +1,31 @@
 # https://www.acmicpc.net/problem/1260
 
-from collections import deque
+
 import sys
 input = sys.stdin.readline
+from collections import deque
 
 n, m, start = list(map(int, input().split()))
-m_list = [[] for _ in range(n+1)]
-for i in range(m):
-    a, b = list(map(int, input().split()))
-    m_list[a].append(b)
+maps = [list(map(int, input().split())) for _ in range(m)]
+chk = [False] * n+1
 
-chk = [False for _ in range(n+1)]
+print(chk)
+
+#bfs
+def bfs(start):
+    q = deque()
+    q.append(start)
+
+    while q:
+        v = q.popleft()
+        print(v, end=' ')
+
+        for i in maps:
+            
 
 
-print(m_list)
+
+
+# 출력
+print(bfs(start))
+print(dfs(start))
