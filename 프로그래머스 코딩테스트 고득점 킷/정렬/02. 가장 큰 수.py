@@ -1,10 +1,7 @@
 def solution(numbers):
-    answer = []
-    numbers = [str(i) for i in numbers]
-
-    for i in numbers 
-
-    return max(answer)
+    answer = ''.join(sorted([str(i) for i in numbers], key=lambda x:x*4 ,reverse=True)).lstrip('0')
+    
+    return '0' if answer == '' else answer
 
 
 
