@@ -1,8 +1,38 @@
 # 그래프 탐색을 통해 부모노드 + 자식노드 == n - 1 이면 해당 노드는 순위가 결정됐다고 볼 수 있음
 # 자신을 제외한 모든 노드를 찾을 수 있기 때문
 
-from collections import deque
+# 플로이드 워셜을 이용한 풀이
+# def solution(n, results):
+#     answer = 0
+#     INF = int(1e9)
 
+#     #플로이드 워셜을 위한 그래프 생성
+#     graph = [[INF] * (n+1) for _ in range(n+1)]
+
+#     # results를 이용해 그래프 초기화
+#     for i in range(1, n+1):
+#         graph[i][i] = 0
+    
+#     for w, l in results:
+#         graph[w][l] = 1
+#         graph[l][w] = -1
+
+#     # 플로이드 워셜 실행
+#     for k in range(1, n+1):
+#         for a in range(1, n+1):
+#             for b in range(1, n+1):
+#                 if graph[a][b] == INF:
+#                     if graph[a][k] == graph[k][b]:
+#                         graph[a][b] = graph[a][k]
+
+#     for i in graph[1:]:
+#         if INF not in i[1:]:
+#             answer += 1
+    
+#     return answer
+
+# 일반적인 그래프탐색 (BFS사용)을 이용한 풀이
+from collections import deque
 def solution(n, results):
     answer = 0
     c_graph = [[] for _ in range(n+1)]
