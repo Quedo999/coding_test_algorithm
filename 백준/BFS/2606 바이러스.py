@@ -1,30 +1,30 @@
 # https://www.acmicpc.net/problem/2606
 
 from collections import deque
-
 import sys
 input = sys.stdin.readline
 
 n = int(input())
-m = int(input())
+net = int(input())
+graph = [[] for _ in range(n+1)]
 
-map = [list(map(int, input().split())) for _ in range(m)]
-chk = [False for _ in range(n + 1)]
+for _ in range(net):
+    u, v = map(int, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
 
-# bfs를 통해 1번에 연결된 컴퓨터 수만 구하면 됨
-def bfs():
-    q = deque()
-    q.append(1)
-    cnt = 0
-    while q:
-        v = q.popleft()
-        for i in map:
-            if i[0] == v and chk[i[1]] == False:
-                q.append(i[1])
-                chk[i[1]] = True
-            elif i[1] == v and chk[i[0]] == False:
-                q.append(i[0])
-                chk[i[0]] = True
-    return chk.count(True) - 1
+visited = [False] * (n+1)
+q = deque()
+q.append(1)
+visited[1] = True
+cnt = 0
 
-print(bfs())
+while q:
+    v = q.popleft()
+    for g in graph[v]:
+        if not visited[g]:
+            visited[g] = True
+            cnt += 1
+            q.append(g)
+
+print(cnt)

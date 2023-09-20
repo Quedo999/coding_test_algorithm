@@ -1,16 +1,11 @@
 #https://www.acmicpc.net/problem/2231
-
-
 n = input()
-l_n = len(n) * 9
-result = 0
+start = max(1, int(n) - (len(n) * 9))
 
-for i in range(int(n) - l_n, int(n) + 1):
-    result += i
-    for j in str(i):
-        result += int(j)
-    if result == int(n):
-        print(i)
-        break
-    else:
-        result = 0
+def fun(start, n):
+    for i in range(start, n+1):
+        if sum([int(num) for num in str(i)]) + i == n:
+            return i
+    return 0
+
+print(fun(start, int(n)))
